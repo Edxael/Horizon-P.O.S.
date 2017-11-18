@@ -29,14 +29,14 @@ export default class extends Component {
               <div style={profile}>
                 <div>
                   <div>
-                    <img style={picSty} src={imgER} alt="Missing Picture"/>
+                    <img style={picSty} src={imgER} alt="Missing "/>
                   </div>
                 </div>
                 <div>
                   <br/>
                   <div><strong>Name: </strong>Edmundo Rubio</div>
-                  <div><strong>GitHub: </strong><a href="https://github.com/Edxael" target="_blank">Edxael</a></div>
-                  <div><strong>Linkedin: </strong><a href="https://www.linkedin.com/in/edmundo-rubio-3252a425/" target="_blank">E. Rubio</a></div>
+                  <div><strong>GitHub: </strong><a href="https://github.com/Edxael" target="_blank" rel="noreferrer noopener">Edxael</a></div>
+                  <div><strong>Linkedin: </strong><a href="https://www.linkedin.com/in/edmundo-rubio-3252a425/" target="_blank" rel="noreferrer noopener">E. Rubio</a></div>
                 </div>
               </div>
 

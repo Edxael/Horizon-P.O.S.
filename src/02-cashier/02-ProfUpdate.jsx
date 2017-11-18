@@ -9,12 +9,12 @@ export default class extends Component {
   }
 
   render(){
-    const btn1 = { margin: "0px auto", display:"block" }
-    const contSty = { display: "flex" }
+    // const btn1 = { margin: "0px auto", display:"block" }
+    // const contSty = { display: "flex" }
     const Rcont = { padding: "0px 15px" }
-    const ConPill = { display: "flex", justifyContent: "center" }
-    const UInfo = { paddingLeft: "15px" }
-    const title2 = { textAlign: "center" }
+    // const ConPill = { display: "flex", justifyContent: "center" }
+    // const UInfo = { paddingLeft: "15px" }
+    // const title2 = { textAlign: "center" }
     const labelSty = { textAlign: "left" }
     const inputSty = { width: "100%" }
     const btnSty = { width: "200px", margin: "0px auto", display: "block", height: "45px" }

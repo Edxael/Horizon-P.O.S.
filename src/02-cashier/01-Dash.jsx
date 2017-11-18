@@ -14,7 +14,7 @@ export default class extends Component {
 
   render(){
     const btn1 = { margin: "0px auto", display:"block" }
-    const contSty = { display: "flex" }
+    // const contSty = { display: "flex" }
     const Rcont = { padding: "0px 15px" }
     const ConPill = { display: "flex", justifyContent: "center" }
     const UInfo = { paddingLeft: "15px" }
@@ -41,7 +41,7 @@ export default class extends Component {
 
             <div style={ConPill}>
               <div>
-                <img src={UPic} alt="Missing Person Picture"/>
+                <img src={UPic} alt="Missing Person"/>
               </div>
               <div style={UInfo}>
                 <p><strong>Name: </strong>Unknow</p>

@@ -13,12 +13,12 @@ export default class extends Component {
 
   render(){
     const pageSty = { border: "2px solid white", backgroundColor: "rgba(254, 254, 254, 0.5)", width: "100%", margin: "0px auto", padding: "15px" }
-    const mySty = { padding: "10px", textAlign: "left", backgroundColor: "rgba(119, 247, 255, 0.5)", border: "2px solid black", textAlign: "center" }
-    const pSty = { textAlign: "left" }
+    const mySty = { padding: "10px", textAlign: "left", backgroundColor: "rgba(119, 247, 255, 0.5)", border: "2px solid black"}
+    // const pSty = { textAlign: "left" }
     const labelSty = { margin: "0px auto", display:"block", padding: "15px 0px 0px 15px", textAlign: "left" }
     const inputSty = { width: "100%" }
     const logCont = { width: "50%", margin: "0px auto", display:"block" }
-    const btn1 = { margin: "0px auto", display:"block" }
+    // const btn1 = { margin: "0px auto", display:"block" }
     const textArea = { width: "100%", height: "100px" }
     return(
       <div>
