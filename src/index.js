@@ -40,9 +40,10 @@ import T_uni from './06-transactions/99-Tran-UniPage.jsx'
 
 class IndexComp extends Component {
   render() {
-    const idxComp = { textAlign: "center" }
+    const idxComp = { textAlign: "center", backgroundColor: "gray", margin: "0px 10%" }
     return(
       <div style={idxComp}>
+        <br/>
         <ApolloProvider client={client} >
           <Router>
             <div>
@@ -84,9 +85,13 @@ class IndexComp extends Component {
 
               </Switch>
 
+              <br/>
+              <hr/>
+              <p>By: Edmundo Rubio</p>
             </div>
           </Router>
         </ApolloProvider>
+        <br/>
       </div>
     )
   }

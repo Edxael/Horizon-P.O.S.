@@ -3,6 +3,11 @@ import VisMenu from './00-1-Pro-Menu.jsx'
 import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 
 export default class extends Component {
+  constructor(props){
+    super(props)
+    this.state = { query: "" }
+  }
+  
   render(){
     return(
       <div>
