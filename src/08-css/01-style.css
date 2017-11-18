@@ -1,0 +1,5 @@
+
+
+
+const menuCont = { display: "flex", justifyContent: "center", padding: "7px" }
+const btn1 = { padding: "5px 8px", margin: "1px", backgroundColor: "aquamarine", border: "1px solid black" }
