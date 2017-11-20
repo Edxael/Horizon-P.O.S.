@@ -50,7 +50,8 @@ class MyLogIn extends Component {
 
         <div style={ConCon}>
 
-          <h2>Log-In</h2>
+          <h1>Log-In</h1>
+          <hr/>
 
           <div style={logCont}>
             <div>

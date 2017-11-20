@@ -29,7 +29,6 @@ class DeleteEmployee extends Component {
   }
 
   render(){
-    const MainSty = { }
     const mySty = { padding: "10px", textAlign: "left", backgroundColor: "rgba(119, 247, 255, 0.5)", border: "2px solid black" }
     const labelSty = { margin: "0px auto", display:"block", padding: "15px 0px 0px 15px" }
     const inputSty = { width: "100%" }

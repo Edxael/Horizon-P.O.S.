@@ -22,8 +22,40 @@ Portfolio: www.mycode.website
 Resume: www.edmundorubio.site
 
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Other Info:
+
+************************************************************************
+                            some profiles:
+************************************************************************
+John
+Shepard
+35
+Space Alliance North American Complex, Sector 7, Building G4, Dep: 827
+https://github.com/Edxael/Images/blob/master/07-Log-In-1/01-Shepard.jpg
+jshepard@alliance.net
+normandy
+
+*********************************
+Miranda
+Lawson
+32
+P.O.Box: 117 Cerberus Corp Moscow Russia
+https://github.com/Edxael/Images/blob/master/07-Log-In-1/02-Miranda.png     
+mlawson@cerberus.net
+oriana2
+
+*********************************
+Jacob
+Taylor
+33
+Space Alliance Eden Prime Complex, Sector 1, Building E3, Dep: 327
+https://github.com/Edxael/Images/blob/master/07-Log-In-1/03-Jacob.jpg        
+jtaylor@cerberus.net
+mako1
+************************************************************************
+
+
 
 
 *************************************************************************************************

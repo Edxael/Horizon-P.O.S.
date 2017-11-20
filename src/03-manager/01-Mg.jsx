@@ -12,7 +12,7 @@ export default class extends Component {
         </div>
 
         <VisMenu/>
-        <div>Manager Menu Component</div>
+        
       </div>
     )
   }

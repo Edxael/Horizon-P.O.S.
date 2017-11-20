@@ -32,6 +32,8 @@ export default class extends Component {
           <div style={pageSty}>
           <h1> Contact Us </h1>
 
+          <hr/>
+
             <div style={logCont}>
 
               {

@@ -18,6 +18,8 @@ export default class extends Component {
 
         <VisMenu/>
         <div style={ConCon}>
+          <h1>Web-Based P.O.S.</h1>
+          <hr/>
           <p>We are a young company with a web-based Point of Sale that provides a secure and simple solution for any type of sales, incorporating different levels of management, so you can provide your personal with the right credentials to execute their work, all that without the need of expensive hardware.</p>
           <div style={pimgCont}>
             <img style={PPSty} src={PosPic} alt="Missing POS Pic"/>

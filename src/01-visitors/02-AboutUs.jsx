@@ -21,6 +21,7 @@ export default class extends Component {
 
         <div style={ConCon}>
           <h1> About Us </h1>
+          <hr/>
           <p>This site was developed by:</p>
 
           <div>

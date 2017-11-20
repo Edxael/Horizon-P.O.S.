@@ -9,14 +9,18 @@ const MUTATION = gql`
               $active: Boolean!,
               $name: String!,
               $price: Float!,
-              $units: Int!
+              $stock: Int!
+              $skbc: String!,
+              $category: String!
             )
   {
-    createProduct( active: $active, name: $name, price: $price, units: $units) {
+    createProduct( active: $active, name: $name, price: $price, stock: $stock, skbc: $skbc, category: $category) {
        active
        name
        price
-       units
+       stock
+       skbc
+       category
     }
   }
 `
@@ -25,7 +29,7 @@ const MUTATION = gql`
 class AddNewProduct extends Component {
   constructor(props){
     super(props)
-    this.state = { name: "", price:"", units:"", active: "" }
+    this.state = { name: "", price:"", stock:"", active: "", skbc: "", category: "" }
   }
 
   exe1 = ()=>{
@@ -35,11 +39,13 @@ class AddNewProduct extends Component {
           variables: {
                         name: this.state.name ,
                         price: parseFloat(this.state.price, 0),
-                        units: parseInt(this.state.units, 0),
+                        skbc: this.state.skbc ,
+                        category: this.state.category ,
+                        stock: parseInt(this.state.stock, 0),
                         active: (this.state.active === "true" ? true : false)
                      }
   })
-  this.setState({ name: "", price:"", units:"", active:"" })
+  this.setState({ name: "", price:"", stock:"", active:"", category: "", skbc: "" })
 }
 
   render(){
@@ -60,9 +66,12 @@ class AddNewProduct extends Component {
             <form>
               <div> <label style={labelSty}>Name:  </label> <input style={inputSty} type="text" placeholder="Name..." value={this.state.name} onChange={ (event) => { this.setState({ name: event.target.value }) } } /></div>
               <div> <label style={labelSty}>Price:  </label> <input style={inputSty} type="text" placeholder="Price..." value={this.state.price} onChange={ (event) => { this.setState({ price: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Units:  </label> <input style={inputSty} type="text" placeholder="Units..." value={this.state.units} onChange={ (event) => { this.setState({ units: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Active:  </label> <input style={inputSty} type="text" placeholder="Active..." value={this.state.active} onChange={ (event) => { this.setState({ active: event.target.value }) } } /></div>
 
+              <div> <label style={labelSty}>SKBC Number:  </label> <input style={inputSty} type="text" placeholder="SKBC Number..." value={this.state.skbc} onChange={ (event) => { this.setState({ skbc: event.target.value }) } } /></div>
+              <div> <label style={labelSty}>Category:  </label> <input style={inputSty} type="text" placeholder="Category..." value={this.state.category} onChange={ (event) => { this.setState({ category: event.target.value }) } } /></div>
+
+              <div> <label style={labelSty}>Units in Stock:  </label> <input style={inputSty} type="text" placeholder="Units in Stock..." value={this.state.stock} onChange={ (event) => { this.setState({ stock: event.target.value }) } } /></div>
+              <div> <label style={labelSty}>Active:  </label> <input style={inputSty} type="text" placeholder="Active..." value={this.state.active} onChange={ (event) => { this.setState({ active: event.target.value }) } } /></div>
             </form>
 
             <br/>

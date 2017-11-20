@@ -68,7 +68,7 @@ class IndexComp extends Component {
                 <Route path="/P3" component={P_Update}/>
                 <Route path="/P4" component={P_Delete}/>
                 <Route path="/P5" component={P_Invent}/>
-                <Route path="/P6" component={P_UniPage}/>
+                <Route path="/pro/:id" component={P_UniPage}/>
 
                 <Route path="/Pe1" component={Per_sea}/>
                 <Route path="/Pe2" component={Per_add}/>

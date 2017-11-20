@@ -11,14 +11,13 @@ export default class VisMenu extends Component {
         <div style={menuCont}>
           <Link style={btn1} to="/P1">Search</Link>
           <Link style={btn1} to="/P2">Add</Link>
-          <Link style={btn1} to="/P3">Update</Link>
           <Link style={btn1} to="/P4">Delete</Link>
           <Link style={btn1} to="/P5">Inventory</Link>
           <Link style={btn1} to="/M1">Manager Menu</Link>
         </div>
 
-          <hr/>
-          <br/>
+        <hr/>
+        <br/>
       </div>
     )
   }
