@@ -2,18 +2,38 @@ import React, { Component } from 'react'
 import VisMenu from './00-1-Vis-Menu.jsx'
 import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 import { Redirect } from 'react-router-dom'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
 
-export default class extends Component {
-  state = { redirect: false, password: "", email: "" }
+class MyLogIn extends Component {
+  state = { redirect: false, password: "", email: "", udb: [] }
 
   exe1 = ()=>{
-    console.log("inside of Exe1");
-    if(this.state.password === "koda"){
+    let ctu = this.state.udb.filter((user)=>{ return user.email === this.state.email})
+    ctu = ctu.reduce((x)=>{return x})
+
+    console.log("Curretn User:")
+    console.log(ctu)
+
+    if(this.state.password === ctu.password){
+      MyLocStorage.add('currentUser', ctu )
       this.setState({ redirect: true })
     }
   }
 
+  componentDidMount(){
+
+    setTimeout(()=>{
+      console.log("Comp Did Mount Executed")
+      this.setState({ udb: this.props.data.allUsers })
+     }, 3000)
+
+  }
+
+
   render(){
+    // console.log(this.props.data.allUsers)
     const logCont = { width: "50%", margin: "0px auto", display:"block", textAlign: "left" }
     const labelSty = { margin: "0px auto", display:"block", padding: "15px 0px 0px 15px" }
     const inputSty = { width: "100%" }
@@ -50,3 +70,26 @@ export default class extends Component {
     )
   }
 }
+
+
+const QUERY = gql`
+  query {
+    allUsers{
+      id
+      active
+      address
+      birthDate
+      email
+      firstName
+      gender
+      hireDate
+      lastName
+      password
+      phone
+      pic
+      role
+    }
+  }
+`
+
+export default graphql(QUERY)(MyLogIn)

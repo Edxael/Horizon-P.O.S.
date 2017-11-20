@@ -5,7 +5,7 @@ export default class extends Component {
   render() {
     const menuCont = { display: "flex", justifyContent: "center", flexDirection: "column"}
     const btn1 = { padding: "5px 8px", margin: "1px", backgroundColor: "rgb(154, 147, 50)", border: "1px solid black", width: "200px" }
-    const outCon = { borderRight: "3px solid white", height: "90%", paddingRight: "10px" }
+    const outCon = { borderRight: "7px solid white", height: "90%", paddingRight: "10px" }
     return(
       <div style={outCon}>
 

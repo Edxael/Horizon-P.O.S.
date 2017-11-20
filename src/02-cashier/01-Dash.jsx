@@ -2,24 +2,31 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import VisMenu from './00-1-Cash-Menu.jsx'
 import Logo1 from '../00-gralComps/01-LogoComp.jsx'
-import UPic from '../00-gralComps/img/s1.jpg'
+// import UPic from '../00-gralComps/img/s1.jpg'
+import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
 
 export default class extends Component {
-  state = { redirect: false }
+  state = { redirect: false, cuser: {} }
 
   exe1 = ()=>{
     console.log("inside of Exe1");
     this.setState({ redirect: true })
   }
 
+  componentDidMount(){
+    this.setState({ cuser: MyLocStorage.get('currentUser') })
+    console.log("Current User: ", MyLocStorage.get('currentUser'))
+  }
+
   render(){
-    const btn1 = { margin: "0px auto", display:"block" }
+    const btn1 = { width: "150px", height: "30px" }
     // const contSty = { display: "flex" }
     const Rcont = { padding: "0px 15px" }
     const ConPill = { display: "flex", justifyContent: "center" }
-    const UInfo = { paddingLeft: "15px" }
+    const UInfo = { paddingLeft: "15px", textAlign: "left" }
     const title2 = { textAlign: "center" }
     const pageSty = { border: "2px solid white", backgroundColor: "rgba(254, 254, 254, 0.5)", width: "100%", margin: "0px auto", padding: "15px", display: "flex" }
+    const ppic = { border: "2px solid black", width: "231px", height: "325px" }
     return(
       <div>
 
@@ -41,14 +48,17 @@ export default class extends Component {
 
             <div style={ConPill}>
               <div>
-                <img src={UPic} alt="Missing Person"/>
+                <img style={ppic} src={this.state.cuser.pic} alt="Missing Person"/>
               </div>
               <div style={UInfo}>
-                <p><strong>Name: </strong>Unknow</p>
-                <p><strong>B-Date: </strong>Unknow</p>
-                <p><strong>Email: </strong>Unknow</p>
-                <p><strong>Phone: </strong>Unknow</p>
-                <p><strong>Address: </strong>Unknow</p>
+                <p><strong>Name: </strong>{`${this.state.cuser.firstName} ${this.state.cuser.lastName}`}</p>
+                <p><strong>Role: </strong>{this.state.cuser.role}</p>
+                <p><strong>B-Date: </strong>{this.state.cuser.birthDate}</p>
+                <p><strong>Gender: </strong>{this.state.cuser.gender}</p>
+                <p><strong>Email: </strong>{this.state.cuser.email}</p>
+                <p><strong>Phone: </strong>{this.state.cuser.phone}</p>
+                <p><strong>Hire Date: </strong>{this.state.cuser.hireDate}</p>
+                <p><strong>Adress: </strong>{this.state.cuser.address}</p>
 
                 <div>
                   { this.state.redirect ? <Redirect push to="/" /> : <button onClick={this.exe1} style={btn1}>Log-Out</button> }

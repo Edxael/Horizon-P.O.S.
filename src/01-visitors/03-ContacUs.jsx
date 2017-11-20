@@ -46,15 +46,15 @@ export default class extends Component {
 
                 <div>
                   <div>
-                      <label style={labelSty} for="uname">Name:</label>
+                      <label style={labelSty} >Name:</label>
                       <input style={inputSty} type="text" id="name" name="name" />
                   </div>
                   <div>
-                      <label style={labelSty} for="email">Email:</label>
+                      <label style={labelSty} >Email:</label>
                       <input style={inputSty} type="email" id="email" name="email" />
                   </div>
                   <div>
-                      <label style={labelSty} for="msg">Comments:</label>
+                      <label style={labelSty} >Comments:</label>
                       <textarea style={textArea} id="msg" name="user_message"></textarea>
                   </div>
 

@@ -35,7 +35,6 @@ const MUTATION = gql`
        phone
        pic
        role
-
     }
   }
 `
@@ -85,6 +84,7 @@ class AddNewEmployee extends Component {
     const labelSty = { margin: "0px auto", display:"block", padding: "15px 0px 0px 15px" }
     const inputSty = { width: "100%" }
     const btnSty = { width: "200px", margin: "0px auto", display: "block", height: "45px" }
+    const pageSty = { border: "2px solid white", backgroundColor: "rgba(254, 254, 254, 0.5)", width: "75%", margin: "0px auto", padding: "15px" }
     return(
       <div>
 
@@ -93,30 +93,32 @@ class AddNewEmployee extends Component {
         </div>
 
         <VisMenu/>
-        <div>Employee Add</div>
+
+        <div style={pageSty}>
+            <h2>Add New Employee Record.</h2>
+
+            <div style={mySty}>
+              <form>
+                <div> <label style={labelSty}>First Name:  </label> <input style={inputSty} type="text" placeholder="First Name..." value={this.state.firstName} onChange={ (event) => { this.setState({ firstName: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Last Name:  </label> <input style={inputSty} type="text" placeholder="Last Name..." value={this.state.lastName} onChange={ (event) => { this.setState({ lastName: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Birth aDate:  </label> <input style={inputSty} type="text" placeholder="Birth Date..." value={this.state.birthDate} onChange={ (event) => { this.setState({ birthDate: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Gender:  </label> <input style={inputSty} type="text" placeholder="Gender..." value={this.state.gender} onChange={ (event) => { this.setState({ gender: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Email:  </label> <input style={inputSty} type="email" placeholder="Email..." value={this.state.email} onChange={ (event) => { this.setState({ email: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Phone:  </label> <input style={inputSty} type="text" placeholder="Phone..." value={this.state.phone} onChange={ (event) => { this.setState({ phone: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Role:  </label> <input style={inputSty} type="text" placeholder="Role..." value={this.state.role} onChange={ (event) => { this.setState({ role: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Password:  </label> <input style={inputSty} type="text" placeholder="Password..." value={this.state.password} onChange={ (event) => { this.setState({ password: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Hire aDate:  </label> <input style={inputSty} type="text" placeholder="Hire Date..." value={this.state.hireDate} onChange={ (event) => { this.setState({ hireDate: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Address:  </label> <input style={inputSty} type="text" placeholder="Address..." value={this.state.address} onChange={ (event) => { this.setState({ address: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Prifile Picture:  </label> <input style={inputSty} type="text" placeholder="Profile Picture..." value={this.state.pic} onChange={ (event) => { this.setState({ pic: event.target.value }) } } /></div>
+                <div> <label style={labelSty}>Active:  </label> <input style={inputSty} type="text" placeholder="Active..." value={this.state.active} onChange={ (event) => { this.setState({ active: event.target.value }) } } /></div>
+              </form>
 
 
-          <div style={mySty}>
-            <form>
-              <div> <label style={labelSty}>First Name:  </label> <input style={inputSty} type="text" placeholder="First Name..." value={this.state.firstName} onChange={ (event) => { this.setState({ firstName: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Last Name:  </label> <input style={inputSty} type="text" placeholder="Last Name..." value={this.state.lastName} onChange={ (event) => { this.setState({ lastName: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Birth aDate:  </label> <input style={inputSty} type="text" placeholder="Birth Date..." value={this.state.birthDate} onChange={ (event) => { this.setState({ birthDate: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Gender:  </label> <input style={inputSty} type="text" placeholder="Gender..." value={this.state.gender} onChange={ (event) => { this.setState({ gender: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Email:  </label> <input style={inputSty} type="email" placeholder="Email..." value={this.state.email} onChange={ (event) => { this.setState({ email: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Phone:  </label> <input style={inputSty} type="text" placeholder="Phone..." value={this.state.phone} onChange={ (event) => { this.setState({ phone: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Role:  </label> <input style={inputSty} type="text" placeholder="Role..." value={this.state.role} onChange={ (event) => { this.setState({ role: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Password:  </label> <input style={inputSty} type="text" placeholder="Password..." value={this.state.password} onChange={ (event) => { this.setState({ password: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Hire aDate:  </label> <input style={inputSty} type="text" placeholder="Hire Date..." value={this.state.hireDate} onChange={ (event) => { this.setState({ hireDate: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Address:  </label> <input style={inputSty} type="text" placeholder="Address..." value={this.state.address} onChange={ (event) => { this.setState({ address: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Prifile Picture:  </label> <input style={inputSty} type="text" placeholder="Profile Picture..." value={this.state.pic} onChange={ (event) => { this.setState({ pic: event.target.value }) } } /></div>
-              <div> <label style={labelSty}>Active:  </label> <input style={inputSty} type="text" placeholder="Active..." value={this.state.active} onChange={ (event) => { this.setState({ active: event.target.value }) } } /></div>
-            </form>
+              <br/>
 
-
-            <br/>
-
-            <button style={btnSty} onClick={()=>{this.exe1()}} >Add Employee</button>
-          </div>
+              <button style={btnSty} onClick={()=>{this.exe1()}} >Add Employee</button>
+            </div>
+        </div>
 
 
       </div>
