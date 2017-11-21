@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 // import VisMenu from './00-1-Cash-Menu.jsx'
 // import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 import { Redirect } from 'react-router-dom'
-import KeyPadImg from '../00-gralComps/img/key2.jpg'
+// import KeyPadImg from '../00-gralComps/img/key2.jpg'
+// <img src={KeyPadImg} alt="Missing KeyPad"/>
 
 export default class extends Component {
-  state = { redirect: false, password: "", email: "" }
+  state = { redirect: false, skinput: "", mninput: "" }
 
   exe1 = ()=>{
     console.log("inside of Exe1");
     this.setState({ redirect: true })
   }
+
 
 
   render(){
@@ -21,9 +23,11 @@ export default class extends Component {
 
     // LEFT STYLE
     const LeftCont = { width: "70%", border: "2px solid black", marginRight: "5px", padding: "15px", backgroundColor: "rgba(254, 254, 254, 0.5)" }
-      const sknInp = { height: "35px", width: "100%", marginBottom: "5px" }
-      const manInp = { height: "35px", width: "100%" }
-      const btn1 = { margin: "0px auto", display:"block" }
+      const sknInp = { height: "35px", width: "80%", marginBottom: "5px", paddingLeft: "8px" }
+      const manInp = { height: "35px", width: "80%", paddingLeft: "8px" }
+      const keypadCont = {  }
+        const roll = { marginBottom: "5px" }
+          const kbtn = { height: "50px", width: "150px" }
 
 
 
@@ -37,7 +41,7 @@ export default class extends Component {
             const lineDesc = { textAlign: "left", width: "80%" }
             const linePrice = { textAlign: "right", width: "20%", paddingRight: "4px" }
 
-      const totalsCont = { backgroundColor: "rgb(175, 228, 255)", padding: "7px", border: "1px solid black", height: "14%", marginTop: "10px" }
+      const totalsCont = { backgroundColor: "rgb(175, 228, 255)", padding: "7px", border: "1px solid black", height: "13%", marginTop: "10px" }
 
         const totLineCont = { display: "flex", justifyContent: "space-between" }
           const totalNum = { textAlign: "right" }
@@ -55,17 +59,34 @@ export default class extends Component {
         <div style={POSCont}>
 
           <div style={LeftCont}>
-            <input style={sknInp} type="text"/><br/>
-            <input style={manInp} type="text"/>
             <hr/>
             <br/>
+            <input style={sknInp} type="text" /><br/>
+            <input style={manInp} type="text" value={this.state.mninput} onChange={(eve)=>{this.setState( { mninput: eve.target.value })}} />
 
-            <img src={KeyPadImg} alt="Missing KeyPad"/>
 
-            <br/>
+            <br/><br/>
             <hr/>
-            <button>Add Product</button>
-            { this.state.redirect ? <Redirect push to="/C1" /> : <button onClick={this.exe1} style={btn1}>Dash-Board</button> }
+            <br/>
+            <div  style={keypadCont}>
+              <div style={roll}>
+                <button style={kbtn}>Add Item</button> <button style={kbtn}>Delete Item</button > <button style={kbtn}>Cancel</button>
+              </div>
+              <div style={roll}>
+                <button style={kbtn}>Cash</button> <button style={kbtn}>Card</button> <button style={kbtn}>Test P.</button>
+              </div>
+            </div>
+
+            <h3>To add items use keypad.</h3>
+
+
+
+
+            <br/><br/>
+            <hr/>
+
+            { this.state.redirect ? <Redirect push to="/C1" /> : <button style={kbtn} onClick={this.exe1} >Dash-Board</button> }
+
           </div>
 
           <div style={RighCont}>
@@ -125,3 +146,22 @@ export default class extends Component {
 }
 
 // <VisMenu/>
+
+
+// <hr/>
+// <br/>
+//
+// <div style={keypadCont}>
+//   <div style={roll}>
+//     <button style={kbtn}>7</button> <button style={kbtn}>8</button> <button style={kbtn}>9</button>
+//   </div>
+//   <div style={roll}>
+//     <button style={kbtn}>4</button> <button style={kbtn}>5</button> <button style={kbtn}>6</button>
+//   </div>
+//   <div style={roll}>
+//     <button style={kbtn}>1</button> <button style={kbtn}>2</button> <button style={kbtn}>3</button>
+//   </div>
+//   <div style={roll}>
+//     <button style={kbtn}>0</button> <button style={kbtn}>.</button> <button style={kbtn}>Clear</button>
+//   </div>
+// </div>
