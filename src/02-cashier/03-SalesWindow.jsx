@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
-// import VisMenu from './00-1-Cash-Menu.jsx'
-// import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 import { Redirect } from 'react-router-dom'
-// import KeyPadImg from '../00-gralComps/img/key2.jpg'
-// <img src={KeyPadImg} alt="Missing KeyPad"/>
 
-export default class extends Component {
-  state = { redirect: false, skinput: "", mninput: "" }
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
+
+
+
+class ProductPOS extends Component {
+  constructor(props){
+    super(props)
+    this.state = { query: "", redirect: false, skinput: "", mninput: "" }
+  }
+
 
   exe1 = ()=>{
     console.log("inside of Exe1");
@@ -16,9 +22,13 @@ export default class extends Component {
 
 
   render(){
+    const { loading, allProducts } = this.props.data
+    console.log("All Prod: ", allProducts)
+    MyLocStorage.add('lm_allProducts', allProducts )
+
+
     // General Style
     const POSCont = { display: "flex", height: "80vh" }
-
 
 
     // LEFT STYLE
@@ -28,7 +38,6 @@ export default class extends Component {
       const keypadCont = {  }
         const roll = { marginBottom: "5px" }
           const kbtn = { height: "50px", width: "150px" }
-
 
 
     // RIGHT STYLE
@@ -145,23 +154,19 @@ export default class extends Component {
   }
 }
 
-// <VisMenu/>
 
+const QUERY = gql`
+  query {
+    allProducts{
+      id
+      active
+      category
+      name
+      price
+      skbc
+      stock
+    }
+  }
+`
 
-// <hr/>
-// <br/>
-//
-// <div style={keypadCont}>
-//   <div style={roll}>
-//     <button style={kbtn}>7</button> <button style={kbtn}>8</button> <button style={kbtn}>9</button>
-//   </div>
-//   <div style={roll}>
-//     <button style={kbtn}>4</button> <button style={kbtn}>5</button> <button style={kbtn}>6</button>
-//   </div>
-//   <div style={roll}>
-//     <button style={kbtn}>1</button> <button style={kbtn}>2</button> <button style={kbtn}>3</button>
-//   </div>
-//   <div style={roll}>
-//     <button style={kbtn}>0</button> <button style={kbtn}>.</button> <button style={kbtn}>Clear</button>
-//   </div>
-// </div>
+export default graphql(QUERY)(ProductPOS)

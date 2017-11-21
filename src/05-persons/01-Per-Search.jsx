@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import VisMenu from './00-1-Per-Menu.jsx'
 import Logo1 from '../00-gralComps/01-LogoComp.jsx'
+import Template from '../00-gralComps/02-Template.jsx'
 
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Template from '../00-gralComps/02-Template.jsx'
 import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
 
 class PerSearch extends Component {
@@ -48,6 +48,7 @@ class PerSearch extends Component {
     )
   }
 }
+
 
 const QUERY = gql`
   query {
