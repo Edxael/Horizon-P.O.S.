@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import VisMenu from './00-1-Cash-Menu.jsx'
+import V_1_Menu from './00-1-Cash-Menu.jsx'
+import V_2_Menu from './00-2-Cash-Menu.jsx'
+import V_3_Menu from './00-3-Cash-Menu.jsx'
 import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 // import UPic from '../00-gralComps/img/s1.jpg'
 import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
@@ -16,6 +18,8 @@ export default class extends Component {
   componentDidMount(){
     this.setState({ cuser: MyLocStorage.get('currentUser') })
     console.log("Current User: ", MyLocStorage.get('currentUser'))
+
+
   }
 
   render(){
@@ -40,7 +44,13 @@ export default class extends Component {
           <div >
             <br/>
             <br/>
-            <VisMenu/>
+
+            {
+              MyLocStorage.get('currentUser').role === "manager" ? <V_3_Menu/> :
+              MyLocStorage.get('currentUser').role === "cashier" ? <V_2_Menu/> : <V_1_Menu/>
+            }
+
+
           </div>
           <div style={Rcont}>
             <div style={title2}>PERSONAL DASHBOARD</div>

@@ -46,13 +46,18 @@ mlawson@cerberus.net
 oriana2
 
 *********************************
-Jacob
-Taylor
-33
-Space Alliance Eden Prime Complex, Sector 1, Building E3, Dep: 327
-https://github.com/Edxael/Images/blob/master/07-Log-In-1/03-Jacob.jpg        
-jtaylor@cerberus.net
-mako1
+
+Yoon Bora
+cashier
+ybora@hook.com
+
+*********************************
+
+Rose Y Park
+rpark@blackpink.com
+Hostess
+
+
 ************************************************************************
 
 

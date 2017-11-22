@@ -12,7 +12,8 @@ export default class extends Component {
         <div style={menuCont}>
           <Link style={btn1} to="/C1">Personal Profile</Link>
           <Link style={btn1} to="/C2">Update Profile</Link>
-
+          <Link style={btn1} to="/C3">SALES-POS</Link>
+          <Link style={btn1} to="/M1">Manager Menu</Link>
         </div>
 
       </div>
