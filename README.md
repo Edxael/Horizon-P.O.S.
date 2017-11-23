@@ -26,6 +26,18 @@ Resume: www.edmundorubio.site
 Other Info:
 
 The pop Ups for the window: Modal , Dialog Box
+https://getbootstrap.com/docs/4.0/components/modal/
+https://www.w3schools.com/howto/howto_css_modals.asp
+https://ux.stackexchange.com/questions/90336/whats-the-difference-between-a-modal-popup-popover-and-lightbox
+https://www.npmjs.com/package/simple-popup-modal
+https://www.npmjs.com/package/modal-popup
+
+react.js modal-popup
+https://reactjsnews.com/modals-in-react
+https://www.npmjs.com/package/react-modal-dialog
+https://www.npmjs.com/package/react-modal
+https://github.com/reactjs/react-modal
+
 
 ************************************************************************
                             some profiles:
