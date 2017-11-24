@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import TemplateSaleLine from './99-Sale-Line-Item.jsx'
+import Modal from 'react-modal'
 
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -11,8 +12,42 @@ import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js
 class ProductPOS extends Component {
   constructor(props){
     super(props)
-    this.state = { query: "", redirect: false, skinput: "", mninput: "", sale: [], notfound: false, subtotal: 0, tax: 0 , total: 0 }
+    this.state = { query: "", redirect: false, skinput: "", mninput: "", sale: [], notfound: false, subtotal: 0, tax: 0 , total: 0, modalIsOpen: false, cash: 0, modal2IsOpen: false, }
+
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
   }
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+  openModal() {
+      this.setState({modalIsOpen: true})
+    }
+
+    // afterOpenModal() {
+    //   // references are now sync'd and can be accessed.
+    //   this.subtitle.style.color = '#f00';
+    // }
+
+    closeModal() {
+      this.setState({modalIsOpen: false});
+    }
+
+    // ------------------------------------------------------------------------------------------------------------------------------
+
+      openModal2() {
+          this.setState({modal2IsOpen: true})
+        }
+
+        // afterOpenModal() {
+        //   // references are now sync'd and can be accessed.
+        //   this.subtitle.style.color = '#f00';
+        // }
+
+        closeModal2() {
+          this.setState({modal2IsOpen: false});
+        }
+
 
 // ------------------------------------------------------------------------------------------------------------------------------
 
@@ -99,6 +134,27 @@ class ProductPOS extends Component {
 
 // ------------------------------------------------------------------------------------------------------------------------------
 
+cashExe = ()=>{
+  console.clear()
+  console.log("cashExe() Executed: ")
+  console.log();
+
+  let cashBack = parseFloat(this.state.mninput) - this.state.total
+
+
+  this.setState({ cash: cashBack })
+  console.clear()
+}
+
+
+cardExe = ()=> {
+  console.clear()
+  console.log("Card Executed");
+}
+
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
 
   cancelSale = ()=>{
     this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], })
@@ -140,6 +196,75 @@ class ProductPOS extends Component {
 
     // <input style={sknInp} type="text" onChange={ ()=>{ this.scanerAddProduct() } }/><br/>
 
+    const customStyles = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+        padding               : '100px'
+      },
+
+      linec: {
+        display: "flex",
+
+        strong1:{
+          // border: "1px solid blue",
+          width: "70%",
+        },
+
+        number: {
+          // border: "1px solid black",
+          width: "30%",
+          textAlign: "right",
+          color: "blue"
+        }
+      },
+
+      button: {
+        width: "250px",
+        height: "40px",
+        margin: "0px auto",
+        display: "block",
+        backgroundColor: "rgb(182, 148, 238)"
+      }
+    }
+
+    const customStyles2 = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+        padding               : '100px'
+      },
+
+      // <div style={customStyles2.linec}><strong style={customStyles2.linec.strong1}>Suceesfully Charged Customer's Card.</strong></div>
+
+      linec: {
+        display: "flex",
+
+        strong1:{
+          // border: "1px solid blue",
+          width: "100%",
+        }
+      },
+
+      button: {
+        width: "250px",
+        height: "40px",
+        margin: "0px auto",
+        display: "block",
+        backgroundColor: "rgb(182, 148, 238)"
+      }
+    }
+
+    // const popWindow = { width: "50%" }
+
     return(
       <div>
         <div>HORIZON P.O.S. -  SALES WINDOW</div>
@@ -176,10 +301,14 @@ class ProductPOS extends Component {
 
             <div  style={keypadCont}>
               <div style={roll}>
-                <button style={kbtn} onClick={ ()=>{ this.addProduct() } }>Add Item</button> <button style={kbtn}>Delete Items</button > <button style={kbtn} onClick={ ()=>{ this.cancelSale() } } >Cancel</button>
+                <button style={kbtn} onClick={ ()=>{ this.addProduct() } }>Add Item</button>
+                <button style={kbtn}>Delete Items</button >
+                <button style={kbtn} onClick={ ()=>{ this.cancelSale() } } >Cancel</button>
               </div>
               <div style={roll}>
-                <button style={kbtn}>Cash</button> <button style={kbtn}>Card</button> <button style={kbtn}>Test P.</button>
+                <button style={kbtn} onClick={ ()=>{ this.cashExe(), this.openModal() } }>Cash</button>
+                <button style={kbtn} onClick={ ()=>{ this.cardExe(), this.openModal2() } }>Card</button>
+                <button style={kbtn}>Test P.</button>
               </div>
             </div>
 
@@ -211,6 +340,64 @@ class ProductPOS extends Component {
 
 
 
+
+        <div>
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
+
+                <div >
+                  <h2>----- Cash Sale Intructions -----</h2>
+                  <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash From Customer: </strong><div style={customStyles.linec.number}>{this.state.mninput}</div></div>
+                  <br/>
+                  <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Total Sale: </strong><div style={customStyles.linec.number}>{this.state.total}</div></div>
+                  <br/>
+                  <hr/>
+                  <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash Back to customer: </strong><div style={customStyles.linec.number}>{this.state.cash}</div></div>
+                  <br/>
+                  <br/>
+                  <div><button style={customStyles.button} onClick={ ()=>{
+                      this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                      this.closeModal()
+                    } }>close when done</button></div>
+                </div>
+
+            </Modal>
+          </div>
+
+
+
+          <div>
+            <Modal
+              isOpen={this.state.modal2IsOpen}
+              onAfterOpen={this.afterOpenModal}
+              onRequestClose={this.closeModal2}
+              style={customStyles2}
+              contentLabel="Example Modal"
+            >
+
+                  <div >
+                    <h2>----- Credic Card Charge Results -----</h2>
+                    <div style={customStyles2.linec}><strong style={customStyles2.linec.strong1}>Suceesfully Charged Customer's Card.</strong></div>
+                    <br/>
+                    <br/>
+                    <div><button style={customStyles2.button} onClick={ ()=>{
+                        this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                        this.closeModal2()
+                      } }>Click to Close</button></div>
+                  </div>
+
+              </Modal>
+            </div>
+
+
+
+
+
       </div>
     )
   }
@@ -232,3 +419,18 @@ const QUERY = gql`
 `
 
 export default graphql(QUERY)(ProductPOS)
+
+
+// <div><button style={customStyles.button} onClick={this.closeModal }>close when done</button></div>
+
+
+// <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+
+
+// <Modal
+//   isOpen={this.state.modalIsOpen}
+//   onAfterOpen={this.afterOpenModal}
+//   onRequestClose={this.closeModal}
+//   style={customStyles}
+//   contentLabel="Example Modal"
+// >
