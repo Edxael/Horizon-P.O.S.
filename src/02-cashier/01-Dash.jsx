@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import V_1_Menu from './00-1-Cash-Menu.jsx'
-import V_2_Menu from './00-2-Cash-Menu.jsx'
-import V_3_Menu from './00-3-Cash-Menu.jsx'
+import V1Menu from './00-1-Cash-Menu.jsx'
+import V2Menu from './00-2-Cash-Menu.jsx'
+import V3Menu from './00-3-Cash-Menu.jsx'
 import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 // import UPic from '../00-gralComps/img/s1.jpg'
 import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
@@ -30,7 +30,7 @@ export default class extends Component {
     const UInfo = { paddingLeft: "15px", textAlign: "left" }
     const title2 = { textAlign: "center" }
     const pageSty = { border: "2px solid white", backgroundColor: "rgba(254, 254, 254, 0.5)", width: "100%", margin: "0px auto", padding: "15px", display: "flex" }
-    const ppic = { border: "2px solid black", width: "231px", height: "325px" }
+    const ppic = { border: "2px solid black", height: "325px", width: "auto" }
     return(
       <div>
 
@@ -46,8 +46,8 @@ export default class extends Component {
             <br/>
 
             {
-              MyLocStorage.get('currentUser').role === "manager" ? <V_3_Menu/> :
-              MyLocStorage.get('currentUser').role === "cashier" ? <V_2_Menu/> : <V_1_Menu/>
+              MyLocStorage.get('currentUser').role === "manager" ? <V3Menu/> :
+              MyLocStorage.get('currentUser').role === "cashier" ? <V2Menu/> : <V1Menu/>
             }
 
 

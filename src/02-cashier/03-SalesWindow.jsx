@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import TemplateSaleLine from './99-Sale-Line-Item.jsx'
 import Modal from 'react-modal'
+
 
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -24,29 +24,19 @@ class ProductPOS extends Component {
       this.setState({modalIsOpen: true})
     }
 
-    // afterOpenModal() {
-    //   // references are now sync'd and can be accessed.
-    //   this.subtitle.style.color = '#f00';
-    // }
-
     closeModal() {
       this.setState({modalIsOpen: false});
     }
 
-    // ------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------
 
-      openModal2() {
-          this.setState({modal2IsOpen: true})
-        }
+  openModal2() {
+      this.setState({modal2IsOpen: true})
+    }
 
-        // afterOpenModal() {
-        //   // references are now sync'd and can be accessed.
-        //   this.subtitle.style.color = '#f00';
-        // }
-
-        closeModal2() {
-          this.setState({modal2IsOpen: false});
-        }
+    closeModal2() {
+      this.setState({modal2IsOpen: false});
+    }
 
 
 // ------------------------------------------------------------------------------------------------------------------------------
@@ -62,12 +52,6 @@ class ProductPOS extends Component {
 
   scanerAddProduct = () => {
     console.clear()
-    console.log("Hello from scaner")
-    // this.setState({ skinput: })
-
-    console.log(this.state.skinput);
-
-
 
     setTimeout( ()=>{
       let currentProduct = MyLocStorage.get('lm_allProducts').filter((x)=>{ return x.skbc === this.state.skinput })
@@ -97,14 +81,12 @@ class ProductPOS extends Component {
 
   }
 
+
 // ------------------------------------------------------------------------------------------------------------------------------
 
 
   addProduct = () => {
     console.clear()
-    console.log("Inside the addProduct Function")
-    console.log( "All the products in Local Storage: ", MyLocStorage.get('lm_allProducts') )
-    console.log("Product skbc to add: ", this.state.mninput )
 
     let currentProduct = MyLocStorage.get('lm_allProducts').filter((x)=>{ return x.skbc === this.state.mninput })
 
@@ -137,14 +119,15 @@ class ProductPOS extends Component {
 cashExe = ()=>{
   console.clear()
   console.log("cashExe() Executed: ")
-  console.log();
 
-  let cashBack = parseFloat(this.state.mninput) - this.state.total
+  let cashBack = Math.round((parseFloat(this.state.mninput) - this.state.total) * 100)/100
 
 
   this.setState({ cash: cashBack })
   console.clear()
 }
+
+// ------------------------------------------------------------------------------------------------------------------------------
 
 
 cardExe = ()=> {
@@ -163,16 +146,52 @@ cardExe = ()=> {
 
 // ------------------------------------------------------------------------------------------------------------------------------
 
+  ckbox1 = (idx)=>{
+    console.clear()
+    console.log("Check Box Selected")
+    console.log(idx)
+    let tempSale = this.state.sale
+
+    // let maped1 = tempSale.map((x, idx2)=>{ return (idx2 === idx ? x.tosell = false : x ) })
+    for(let x = 0; x < tempSale.length; x++){
+      if(x === idx){
+        tempSale[x].tosell = false
+      }
+    }
+
+    this.setState({ sale: tempSale })
+    console.log(this.state.sale)
+  }
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+deleteItems = ()=>{
+  console.clear()
+  console.log("Deleting Selected Items")
+  let tempSale = this.state.sale.filter((x)=>{ return x.tosell === true })
+
+  this.setState({ sale: tempSale })
+
+  setTimeout( ()=>{
+    let tempSubTot = Math.round( this.state.sale.reduce((acum, cval)=>{ return acum + cval.price }, 0) * 100 )/100
+    const temptax = Math.round( tempSubTot * ( 0.07 ) * 100 )/100
+    const tempTot = Math.round( temptax + tempSubTot * 100 )/100
+    console.log("changing totals states")
+    this.setState({ subtotal: tempSubTot, tax: temptax, total: tempTot })
+    console.log(this.state.sale)
+  } , 600 )
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------
 
   render(){
     const { allProducts } = this.props.data
-    // console.log("New AllP", allProducts)
     MyLocStorage.add('lm_allProducts', allProducts )
-    // MyLocStorage.add('', allProducts )
-
 
     // General Style
-    const POSCont = { display: "flex", height: "80vh" }
+    const POSCont = { display: "flex", height: "80vh"}
+
 
 
     // LEFT STYLE
@@ -194,54 +213,27 @@ cardExe = ()=> {
           const totalNum = { textAlign: "right" }
           const totalTex = { textAlign: "right" }
 
-    // <input style={sknInp} type="text" onChange={ ()=>{ this.scanerAddProduct() } }/><br/>
+          const recordLine = { display: "flex", height: "25px" }
+            const ckButt = { height: "25px", width: "25px", verticalAlign: "middle" }
+            const lineTextCont = { display: "flex", paddingTop: "6px", width: "100%" }
+              const lineDesc = { textAlign: "left", width: "80%" }
+              const linePrice = { textAlign: "right", width: "20%", paddingRight: "4px" }
 
+    // Styles of Pop-Up Windows
     const customStyles = {
-      content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-        padding               : '100px'
-      },
+      content : { top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', padding: '100px' },
 
-      linec: {
-        display: "flex",
-
-        strong1:{
-          // border: "1px solid blue",
-          width: "70%",
+      linec: { display: "flex",
+        strong1:{ width: "70%",
         },
-
-        number: {
-          // border: "1px solid black",
-          width: "30%",
-          textAlign: "right",
-          color: "blue"
-        }
+        number: { width: "30%", textAlign: "right", color: "blue" }
       },
 
-      button: {
-        width: "250px",
-        height: "40px",
-        margin: "0px auto",
-        display: "block",
-        backgroundColor: "rgb(182, 148, 238)"
-      }
+      button: { width: "250px", height: "40px", margin: "0px auto", display: "block", backgroundColor: "rgb(182, 148, 238)" }
     }
 
     const customStyles2 = {
-      content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-        padding               : '100px'
-      },
+      content : { top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', padding: '100px' },
 
       // <div style={customStyles2.linec}><strong style={customStyles2.linec.strong1}>Suceesfully Charged Customer's Card.</strong></div>
 
@@ -254,21 +246,17 @@ cardExe = ()=> {
         }
       },
 
-      button: {
-        width: "250px",
-        height: "40px",
-        margin: "0px auto",
-        display: "block",
-        backgroundColor: "rgb(182, 148, 238)"
-      }
+      button: { width: "250px", height: "40px", margin: "0px auto", display: "block", backgroundColor: "rgb(182, 148, 238)" }
     }
 
-    // const popWindow = { width: "50%" }
 
     return(
       <div>
+
+
         <div>HORIZON P.O.S. -  SALES WINDOW</div>
         <hr/>
+        <br/>
 
         <div style={POSCont}>
 
@@ -278,14 +266,14 @@ cardExe = ()=> {
 
 
             { this.state.notfound ? <div style={pnfSty}>CODE Not Found :(</div> :
-                <input style={sknInp} type="text" value={this.state.skinput} onChange={
+                <input style={sknInp} type="text" value={this.state.skinput} placeholder="ONLY Scanner Input..."
+                  onChange={
                     (eve)=>{
                         this.setState( { skinput: eve.target.value })
                         console.log("skinput: ", this.state.skinput.length )
                         if(this.state.skinput.length === 7){
                           this.scanerAddProduct()
                         }
-
                     }
                   } />
             }
@@ -293,7 +281,8 @@ cardExe = ()=> {
             <br/>
 
             { this.state.notfound ? <div style={pnfSty}>CODE Not Found :(</div> :
-                <input style={manInp} type="text" value={this.state.mninput} onChange={(eve)=>{this.setState( { mninput: eve.target.value })}} />
+                <input style={manInp} type="text" value={this.state.mninput} placeholder= "CASH and Manual Code Input..."
+                       onChange={(eve)=>{this.setState( { mninput: eve.target.value })}} />
             }
 
             <br/><br/>
@@ -301,20 +290,31 @@ cardExe = ()=> {
 
             <div  style={keypadCont}>
               <div style={roll}>
-                <button style={kbtn} onClick={ ()=>{ this.addProduct() } }>Add Item</button>
-                <button style={kbtn}>Delete Items</button >
-                <button style={kbtn} onClick={ ()=>{ this.cancelSale() } } >Cancel</button>
+                <button style={kbtn} onClick={ ()=>{ this.addProduct() } }>Manual Code Input</button>
+                <button style={kbtn} onClick={ this.deleteItems } >Delete Items</button >
+                <button style={kbtn} onClick={ ()=>{ this.cancelSale() } } >Cancel Sale</button>
               </div>
+
               <div style={roll}>
-                <button style={kbtn} onClick={ ()=>{ this.cashExe(), this.openModal() } }>Cash</button>
-                <button style={kbtn} onClick={ ()=>{ this.cardExe(), this.openModal2() } }>Card</button>
+                <button style={kbtn} onClick={ ()=>{
+                    this.cashExe()
+                    this.openModal() } }>Finish CASH Sale</button>
+
+                <button style={kbtn} onClick={ ()=>{
+                    this.cardExe()
+                    this.openModal2() } }>Finish CARD Sale</button>
+
                 <button style={kbtn}>Test P.</button>
               </div>
             </div>
 
-            <h3>To add items use keypad.</h3>
+            <h4>For CASH and Manual Code Input, use Key-Pad.</h4>
             <hr/>
-            { this.state.redirect ? <Redirect push to="/C1" /> : <button style={kbtn} onClick={this.redirectToDashBoard} >Dash-Board</button> }
+            { this.state.redirect ? <Redirect push to="/C1" /> : <button style={kbtn}
+                                                                  onClick={ ()=>{
+
+                                                                    this.redirectToDashBoard()
+                                                                  } } >Exit Sales Window</button> }
 
           </div>
 
@@ -322,8 +322,21 @@ cardExe = ()=> {
 
             <div style={ItemsCont}>
                 {
-                  this.state.sale[0] === undefined ? <div>No Items Yet </div> :
-                  this.state.sale.map((product)=>{ return <TemplateSaleLine key={product.id} name={product.name} price={product.price} /> })
+                  this.state.sale[0] === undefined ? <div><br/><h1>No Items Yet</h1></div> :
+                  this.state.sale.map((product, idx)=>{ return (
+
+                      <div style={recordLine} key={product.id}>
+                        <input  style={ckButt}
+                                type="checkbox"
+
+                                onChange={()=>{ this.ckbox1(idx) }}
+                                />
+                        <div style={lineTextCont}>
+                          <div style={lineDesc}>{(product.name.substring(0, 15))}</div>
+                          <div style={linePrice}>{product.price}</div>
+                        </div>
+                      </div>
+                  )})
                 }
             </div>
 
@@ -352,18 +365,29 @@ cardExe = ()=> {
 
                 <div >
                   <h2>----- Cash Sale Intructions -----</h2>
-                  <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash From Customer: </strong><div style={customStyles.linec.number}>{this.state.mninput}</div></div>
-                  <br/>
-                  <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Total Sale: </strong><div style={customStyles.linec.number}>{this.state.total}</div></div>
-                  <br/>
-                  <hr/>
-                  <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash Back to customer: </strong><div style={customStyles.linec.number}>{this.state.cash}</div></div>
-                  <br/>
-                  <br/>
-                  <div><button style={customStyles.button} onClick={ ()=>{
-                      this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
-                      this.closeModal()
-                    } }>close when done</button></div>
+
+                  {
+                    (this.state.total > this.state.mninput) ? <div>
+                    <h2>Cash from customer is less than Total</h2>
+                      <div><button style={customStyles.button} onClick={ ()=>{
+                          this.closeModal()
+                        } }>Close and fix Cash Input</button></div>
+                    </div> :
+                    <div>
+                      <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash From Customer: </strong><div style={customStyles.linec.number}>{this.state.mninput}</div></div>
+                      <br/>
+                      <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Total Sale: </strong><div style={customStyles.linec.number}>{this.state.total}</div></div>
+                      <br/>
+                      <hr/>
+                      <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash Back to customer: </strong><div style={customStyles.linec.number}>{this.state.cash}</div></div>
+                      <br/>
+                      <br/>
+                      <div><button style={customStyles.button} onClick={ ()=>{
+                          this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                          this.closeModal()
+                              } }>close when done</button></div>
+                    </div>
+                  }
                 </div>
 
             </Modal>
@@ -381,8 +405,10 @@ cardExe = ()=> {
             >
 
                   <div >
-                    <h2>----- Credic Card Charge Results -----</h2>
-                    <div style={customStyles2.linec}><strong style={customStyles2.linec.strong1}>Suceesfully Charged Customer's Card.</strong></div>
+                    <h2>----- Credic Card Charge Result -----</h2>
+                    <div style={customStyles2.linec}><strong style={customStyles2.linec.strong1}>{
+                        (this.state.sale[0] === undefined) ? <div>No Items in card tobe Charged.</div> : <div>Suceesfully Charged Customer's Card.</div>
+                      }</strong></div>
                     <br/>
                     <br/>
                     <div><button style={customStyles2.button} onClick={ ()=>{
@@ -394,10 +420,6 @@ cardExe = ()=> {
               </Modal>
             </div>
 
-
-
-
-
       </div>
     )
   }
@@ -406,31 +428,28 @@ cardExe = ()=> {
 
 const QUERY = gql`
   query {
-    allProducts{
-      id
-      active
-      category
-      name
-      price
-      skbc
-      stock
-    }
+    allProducts{ id active category name price skbc stock }
   }
 `
 
 export default graphql(QUERY)(ProductPOS)
 
 
-// <div><button style={customStyles.button} onClick={this.closeModal }>close when done</button></div>
 
 
-// <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-
-
-// <Modal
-//   isOpen={this.state.modalIsOpen}
-//   onAfterOpen={this.afterOpenModal}
-//   onRequestClose={this.closeModal}
-//   style={customStyles}
-//   contentLabel="Example Modal"
+// <Fullscreen
+//   enabled={this.state.isFullscreenEnabled}
+//   onChange={isFullscreenEnabled => this.setState({isFullscreenEnabled})}
 // >
+// <div style={ MainCont }>
+//
+// </div>
+// </Fullscreen>
+
+// this.setState({ isFullscreenEnabled: false })
+//
+//
+// componentDidMount(){
+//   console.log("going Full Screen")
+//   this.setState({ isFullscreenEnabled: true })
+// }
