@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import Modal from 'react-modal'
+import printJS from 'print-js'
 
 
 import { graphql } from 'react-apollo'
@@ -183,6 +184,118 @@ deleteItems = ()=>{
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------
+
+printing1 = () => {
+  console.log("Printing")
+
+    const testdata =
+    [
+
+     ]
+
+    //  { name: "0000000000000", price: "000.00" }
+
+    //  name: "8888888888883",
+    //  price: "29.99"
+
+  const mydata = this.state.sale
+  const pdata = [ ]
+
+  for(let x = 0; x < mydata.length; x++ ){
+    pdata.push( { name: mydata[x].name.substring(0, 12), price: mydata[x].price.toFixed(2) } )
+  }
+
+  // subtotal: 0, tax: 0 , total: 0,
+  // https://www.cssscript.com/javascript-library-printing-elements-page-print-js/
+
+  pdata.push( { name: "_____________", price: "______" } )
+  pdata.push( { name: "Sub_Total:", price: this.state.subtotal.toFixed(2) } )
+  pdata.push( { name: "Tax:", price: this.state.tax.toFixed(2) } )
+  pdata.push( { name: "Total:", price: this.state.total.toFixed(2) } )
+
+
+  console.log(pdata)
+
+  // console.log(testdata)
+
+
+  printJS({
+      header: "HORIZON",
+
+      printable: pdata,
+      properties: [ "name", "price"],
+      maxWidth: 1000,
+      type: 'json'
+    })
+
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+pr2 = () => {
+  console.log("Printing")
+
+  let mydata = this.state.sale
+  let pdata = [ ]
+
+  for(let x = 0; x < mydata.length; x++ ){
+    pdata.push( { name: mydata[x].name.substring(0, 12), price: mydata[x].price.toFixed(2) } )
+  }
+
+  pdata.push( { name: "_____________", price: "______" } )
+  pdata.push( { name: "Sub_Total:", price: this.state.subtotal.toFixed(2) } )
+  pdata.push( { name: "Tax:", price: this.state.tax.toFixed(2) } )
+  pdata.push( { name: "Total:", price: this.state.total.toFixed(2) } )
+
+
+  console.log(pdata)
+
+
+  printJS({
+      header: "HORIZON",
+
+      printable: pdata,
+      properties: [ "name", "price"],
+      maxWidth: 1000,
+      type: 'json'
+    })
+
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
+pr3 = () => {
+  console.log("Printing")
+
+  let mydata = this.state.sale
+  let pdata = [ ]
+
+  for(let x = 0; x < mydata.length; x++ ){
+    pdata.push( { name: mydata[x].name.substring(0, 12), price: mydata[x].price.toFixed(2) } )
+  }
+
+  pdata.push( { name: "_____________", price: "______" } )
+  pdata.push( { name: "Sub_Total:", price: this.state.subtotal.toFixed(2) } )
+  pdata.push( { name: "Tax:", price: this.state.tax.toFixed(2) } )
+  pdata.push( { name: "Total:", price: this.state.total.toFixed(2) } )
+
+
+  console.log(pdata)
+
+
+  printJS({
+      header: "HORIZON",
+
+      printable: pdata,
+      properties: [ "name", "price"],
+      maxWidth: 1000,
+      type: 'json'
+    })
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------------------------------------
 
   render(){
@@ -304,7 +417,7 @@ deleteItems = ()=>{
                     this.cardExe()
                     this.openModal2() } }>Finish CARD Sale</button>
 
-                <button style={kbtn}>Test P.</button>
+                  <button style={kbtn} onClick={ this.printing1 }>Test P.</button>
               </div>
             </div>
 
@@ -383,9 +496,10 @@ deleteItems = ()=>{
                       <br/>
                       <br/>
                       <div><button style={customStyles.button} onClick={ ()=>{
-                          this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                          this.pr2()
                           this.closeModal()
-                              } }>close when done</button></div>
+                          this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                        } }>Print Receipt</button></div>
                     </div>
                   }
                 </div>
@@ -412,9 +526,10 @@ deleteItems = ()=>{
                     <br/>
                     <br/>
                     <div><button style={customStyles2.button} onClick={ ()=>{
-                        this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                        this.pr2()
                         this.closeModal2()
-                      } }>Click to Close</button></div>
+                        this.setState({ subtotal: 0, tax: 0 , total: 0, skinput: "", mninput: "", sale: [], cash: 0 })
+                      } }>Print Customer Receipt</button></div>
                   </div>
 
               </Modal>

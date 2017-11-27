@@ -1,0 +1,28 @@
+-- HORIZON P.O.S. --
+**********************
+
+002 hard drive   25.45
+001 Laptop Com 1000.00
+001 Lays Chips    1.25
+
+----------------------
+Pre Total      1026.70
+Tax              71.86
+
+Final Total    1098.56
+
+
+Partition of Line:
+
+Quantity:  3
+Space:     1
+Descript: 10
+Space:     1
+Price:     7
+-------------
+Total     22
+
+Dist Partition
+3-10-7
+
+----------------------
