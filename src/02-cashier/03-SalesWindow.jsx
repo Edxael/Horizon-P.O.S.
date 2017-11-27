@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import Modal from 'react-modal'
-import printJS from 'print-js'
+// import printJS from 'print-js'
+    // "print-js": "^1.0.24",
+import printJS from '../print-js'
 
 
 import { graphql } from 'react-apollo'

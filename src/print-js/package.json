@@ -1,0 +1,96 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "print-js",
+        "scope": null,
+        "escapedName": "print-js",
+        "name": "print-js",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/edmundo/Desktop/00-Projects/02-horizon"
+    ]
+  ],
+  "_from": "print-js@latest",
+  "_id": "print-js@1.0.24",
+  "_inCache": true,
+  "_location": "/print-js",
+  "_nodeVersion": "6.10.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/print-js-1.0.24.tgz_1510125012602_0.3825632664375007"
+  },
+  "_npmUser": {
+    "name": "crabbly",
+    "email": "rodrigo@crabbly.com"
+  },
+  "_npmVersion": "5.3.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "print-js",
+    "scope": null,
+    "escapedName": "print-js",
+    "name": "print-js",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/print-js/-/print-js-1.0.24.tgz",
+  "_shasum": "92723a215ec1bc55126c49be84a3d58b702e3f56",
+  "_shrinkwrap": null,
+  "_spec": "print-js",
+  "_where": "/home/edmundo/Desktop/00-Projects/02-horizon",
+  "author": {
+    "name": "Rodrigo Vieira",
+    "email": "rodrigo@crabbly.com"
+  },
+  "bugs": {
+    "url": "https://github.com/crabbly/Print.js/issues"
+  },
+  "dependences": {},
+  "dependencies": {},
+  "description": "A tiny javascript library to help printing from the web.",
+  "devDependencies": {
+    "cross-env": "^3.2.3",
+    "laravel-mix": "^0.8.3",
+    "standard": "^7.1.2"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-EpLqhpkDCl8gWJg/YMU1m161hVcifPahhYgBnzBxj4cOuNbLolqJlp88eDAFq8ElxtfiKRxMB7zHIi3h51PKJg==",
+    "shasum": "92723a215ec1bc55126c49be84a3d58b702e3f56",
+    "tarball": "https://registry.npmjs.org/print-js/-/print-js-1.0.24.tgz"
+  },
+  "gitHead": "d2547024966d896b907412654c3d8031eefb8687",
+  "homepage": "http://printjs.crabbly.com",
+  "license": "MIT",
+  "main": "src/index.js",
+  "maintainers": [
+    {
+      "name": "crabbly",
+      "email": "rodrigo@crabbly.com"
+    }
+  ],
+  "name": "print-js",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crabbly/Print.js.git"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "test": "standard",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "version": "1.0.24"
+}
