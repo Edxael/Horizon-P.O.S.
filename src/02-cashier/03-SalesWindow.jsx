@@ -156,11 +156,13 @@ cardExe = ()=> {
     let tempSale = this.state.sale
 
     // let maped1 = tempSale.map((x, idx2)=>{ return (idx2 === idx ? x.tosell = false : x ) })
-    for(let x = 0; x < tempSale.length; x++){
-      if(x === idx){
-        tempSale[x].tosell = false
-      }
-    }
+    // for(let x = 0; x < tempSale.length; x++){
+    //   if(x === idx){
+    //     tempSale[x].tosell = false
+    //   }
+    // }
+
+    tempSale[idx].tosell = false
 
     this.setState({ sale: tempSale })
     console.log(this.state.sale)
@@ -200,12 +202,24 @@ printing1 = () => {
     //  name: "8888888888883",
     //  price: "29.99"
 
-  const mydata = this.state.sale
-  const pdata = [ ]
+  // const mydata = this.state.sale
+  // const pdata = [ ]
+  const pdata = this.state.sale
+  console.log(pdata);
 
-  for(let x = 0; x < mydata.length; x++ ){
-    pdata.push( { name: mydata[x].name.substring(0, 12), price: mydata[x].price.toFixed(2) } )
-  }
+  pdata.map((x)=>{ return
+    {
+      x.name.substring(0, 12),
+      x.price.toFixed(2)
+    }
+  })
+
+
+  // for(let x = 0; x < mydata.length; x++ ){
+  //   pdata.push( { name: mydata[x].name.substring(0, 12), price: mydata[x].price.toFixed(2) } )
+  // }
+
+
 
   // subtotal: 0, tax: 0 , total: 0,
   // https://www.cssscript.com/javascript-library-printing-elements-page-print-js/
@@ -215,7 +229,7 @@ printing1 = () => {
   pdata.push( { name: "Tax:", price: this.state.tax.toFixed(2) } )
   pdata.push( { name: "Total:", price: this.state.total.toFixed(2) } )
 
-
+  console.log("Data To Print: ");
   console.log(pdata)
 
   // console.log(testdata)
