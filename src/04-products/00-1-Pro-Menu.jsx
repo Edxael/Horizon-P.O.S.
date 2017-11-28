@@ -13,7 +13,8 @@ export default class VisMenu extends Component {
           <Link style={btn1} to="/P2">Add</Link>
           <Link style={btn1} to="/P4">Delete</Link>
           <Link style={btn1} to="/P5">Inventory</Link>
-          <Link style={btn1} to="/M1">Manager Menu</Link>
+          <Link style={btn1} to="/M1">Admin Menu</Link>
+          <Link style={btn1} to="/">Log-Out</Link>
         </div>
 
         <hr/>

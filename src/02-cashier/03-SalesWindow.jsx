@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 // import printJS from 'print-js'
     // "print-js": "^1.0.24",
 import printJS from '../print-js'
+import rlogo from '../00-gralComps/img/h20.jpg'
 
 
 import { graphql } from 'react-apollo'
@@ -190,60 +191,38 @@ deleteItems = ()=>{
 // ------------------------------------------------------------------------------------------------------------------------------
 
 printing1 = () => {
+  console.clear()
   console.log("Printing")
 
-    const testdata =
-    [
+      const pdata = this.state.sale
+      console.log(pdata);
 
-     ]
-
-    //  { name: "0000000000000", price: "000.00" }
-
-    //  name: "8888888888883",
-    //  price: "29.99"
+      pdata.map((x)=>{ return { name:  (x.name).substring(0, 12), price:  (x.price).toFixed(2) } })
 
   // const mydata = this.state.sale
   // const pdata = [ ]
-  const pdata = this.state.sale
-  console.log(pdata);
-
-  pdata.map((x)=>{ return
-    {
-      x.name.substring(0, 12),
-      x.price.toFixed(2)
-    }
-  })
-
-
+  //
   // for(let x = 0; x < mydata.length; x++ ){
   //   pdata.push( { name: mydata[x].name.substring(0, 12), price: mydata[x].price.toFixed(2) } )
   // }
-
-
-
-  // subtotal: 0, tax: 0 , total: 0,
-  // https://www.cssscript.com/javascript-library-printing-elements-page-print-js/
 
   pdata.push( { name: "_____________", price: "______" } )
   pdata.push( { name: "Sub_Total:", price: this.state.subtotal.toFixed(2) } )
   pdata.push( { name: "Tax:", price: this.state.tax.toFixed(2) } )
   pdata.push( { name: "Total:", price: this.state.total.toFixed(2) } )
-
   console.log("Data To Print: ");
   console.log(pdata)
 
-  // console.log(testdata)
-
 
   printJS({
-      header: "HORIZON",
-
       printable: pdata,
+      header: "HORIZON",
       properties: [ "name", "price"],
-      maxWidth: 1000,
       type: 'json'
     })
 
+    // https://www.cssscript.com/javascript-library-printing-elements-page-print-js/
+    // http://printjs.crabbly.com/
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------
@@ -269,7 +248,6 @@ pr2 = () => {
 
   printJS({
       header: "HORIZON",
-
       printable: pdata,
       properties: [ "name", "price"],
       maxWidth: 1000,
@@ -325,12 +303,13 @@ pr3 = () => {
 
     // LEFT STYLE
     const LeftCont = { width: "70%", border: "2px solid black", marginRight: "5px", padding: "15px", backgroundColor: "rgba(254, 254, 254, 0.5)" }
-      const sknInp = { height: "35px", width: "80%", marginBottom: "5px", paddingLeft: "8px" }
-      const manInp = { height: "35px", width: "80%", paddingLeft: "8px" }
+      const sknInp = { height: "35px", width: "80%", marginBottom: "5px", paddingLeft: "8px", backgroundColor: "rgba(255, 121, 112, 0.5)" }
+      const manInp = { height: "35px", width: "80%", paddingLeft: "8px", backgroundColor: "rgba(143, 237, 49, 0.5)" }
       const pnfSty = { backgroundColor: "red", width: "80%", height: "35px", textAlign: "center", fontSize: "30px", marginLeft: "10%" }
       const keypadCont = {  }
         const roll = { marginBottom: "5px" }
-          const kbtn = { height: "50px", width: "150px" }
+          const kbtn = { height: "50px", width: "150px", backgroundColor: "rgba(110, 123, 244, 0.5)" }
+          const Ebtn = { height: "50px", width: "150px", backgroundColor: "rgba(79, 0, 2, 0.5)" }
 
 
     // RIGHT STYLE
@@ -350,7 +329,7 @@ pr3 = () => {
 
     // Styles of Pop-Up Windows
     const customStyles = {
-      content : { top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', padding: '100px' },
+      content : { top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', padding: '100px', backgroundColor: "rgba(36, 255, 229, 0.5)", border: "3px solid black" },
 
       linec: { display: "flex",
         strong1:{ width: "70%",
@@ -362,7 +341,7 @@ pr3 = () => {
     }
 
     const customStyles2 = {
-      content : { top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', padding: '100px' },
+      content : { top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', padding: '100px', backgroundColor: "rgba(36, 255, 229, 0.5)", border: "3px solid black"  },
 
       // <div style={customStyles2.linec}><strong style={customStyles2.linec.strong1}>Suceesfully Charged Customer's Card.</strong></div>
 
@@ -404,7 +383,7 @@ pr3 = () => {
                           this.scanerAddProduct()
                         }
                     }
-                  } />
+                  } autoFocus={true} />
             }
 
             <br/>
@@ -433,13 +412,13 @@ pr3 = () => {
                     this.cardExe()
                     this.openModal2() } }>Finish CARD Sale</button>
 
-                  <button style={kbtn} onClick={ this.printing1 }>Test P.</button>
+                  <button style={kbtn} onClick={ this.printing1 }>Test Printer</button>
               </div>
             </div>
 
             <h4>For CASH and Manual Code Input, use Key-Pad.</h4>
             <hr/>
-            { this.state.redirect ? <Redirect push to="/C1" /> : <button style={kbtn}
+            { this.state.redirect ? <Redirect push to="/C1" /> : <button style={Ebtn}
                                                                   onClick={ ()=>{
 
                                                                     this.redirectToDashBoard()
@@ -503,7 +482,7 @@ pr3 = () => {
                         } }>Close and fix Cash Input</button></div>
                     </div> :
                     <div>
-                      <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash From Customer: </strong><div style={customStyles.linec.number}>{this.state.mninput}</div></div>
+                      <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Cash From Customer: </strong><div style={customStyles.linec.number}>{(parseFloat(this.state.mninput)).toFixed(2)}</div></div>
                       <br/>
                       <div style={customStyles.linec}><strong style={customStyles.linec.strong1}>Total Sale: </strong><div style={customStyles.linec.number}>{this.state.total}</div></div>
                       <br/>

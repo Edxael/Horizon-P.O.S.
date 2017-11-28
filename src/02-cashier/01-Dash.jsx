@@ -23,7 +23,9 @@ export default class extends Component {
   }
 
   render(){
-    const btn1 = { width: "150px", height: "30px" }
+    const btn1 = { width: "150px", height: "30px", marginRight: "35px", backgroundColor: "rgba(102, 48, 190, 0.5)" }
+    const btn2 = { width: "150px", height: "30px", marginRight: "4px", backgroundColor: "rgba(66, 221, 11, 0.5)" }
+    const btn3 = { width: "150px", height: "30px", marginRight: "1px", backgroundColor: "rgba(236, 14, 0, 0.5)" }
     // const contSty = { display: "flex" }
     const Rcont = { padding: "0px 15px" }
     const ConPill = { display: "flex", justifyContent: "center" }
@@ -71,7 +73,9 @@ export default class extends Component {
                 <p><strong>Adress: </strong>{this.state.cuser.address}</p>
 
                 <div>
-                  { this.state.redirect ? <Redirect push to="/" /> : <button onClick={this.exe1} style={btn1}>Log-Out</button> }
+                  { this.state.redirect ? <Redirect push to="/" /> : <button onClick={this.exe1} style={btn1}>Profile Log-Out</button> }
+                  <button style={btn2}>Time Clock--In</button>
+                  <button style={btn3}>Time Clock-Out</button>
                 </div>
               </div>
             </div>

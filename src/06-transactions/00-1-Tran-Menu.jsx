@@ -13,7 +13,8 @@ export default class extends Component {
           <Link style={btn1} to="/T3">Update Sale</Link>
           <Link style={btn1} to="/T4">Delete Sale</Link>
           <Link style={btn1} to="/T5">P & L</Link>
-          <Link style={btn1} to="/M1">Manager Menu</Link>
+          <Link style={btn1} to="/M1">Admin Menu</Link>
+          <Link style={btn1} to="/">Log-Out</Link>
         </div>
       </div>
     )

@@ -8,7 +8,7 @@ export default class VisMenu extends Component {
     const ConCon = { border: "2px solid white", backgroundColor: "rgba(254, 254, 254, 0.5)", width: "100%", margin: "0px auto", padding: "15px" }
     return(
       <div>
-        <h2>Manager Menu</h2>
+        <h2>Admin Menu</h2>
         <hr/>
         <br/>
 
