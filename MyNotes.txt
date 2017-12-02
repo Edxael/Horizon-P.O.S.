@@ -6,6 +6,23 @@ the total is not acurate
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Other Info:
 
+the  qurerry that I used in Playground:
+
+query {
+  allTimeRecords{
+    id
+    in
+    out
+    user {
+        id
+        firstName
+        lastName
+      }
+    }
+}
+
+
+
 DateTime:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
 https://stackoverflow.com/questions/4744299/how-to-get-datetime-in-javascript

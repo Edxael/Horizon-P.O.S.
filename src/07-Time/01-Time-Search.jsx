@@ -40,8 +40,9 @@ class TimeRSearch extends Component {
 
               {
                 !loading && allTimeRecords
-                .filter((TimeCard)=>{ return ( (`${TimeCard.in} ${TimeCard.out} ${TimeCard.user}`).toLowerCase().includes(this.state.query.toLowerCase()) ) })
-                .map((TimeCard)=>{ return( <Template key={TimeCard.id} id={TimeCard.id} employee={TimeCard.user.id}
+                .filter((TimeCard)=>{ return ( (`${TimeCard.in} ${TimeCard.out} ${TimeCard.user.firstName} ${TimeCard.user.lastName}`).toLowerCase().includes(this.state.query.toLowerCase()) ) })
+                .map((TimeCard)=>{ return( <Template key={TimeCard.id} id={TimeCard.id}
+                      fname={TimeCard.user.firstName} lname={TimeCard.user.lastName}
                       in={TimeCard.in} out={TimeCard.out} /> ) })
               }
 
@@ -61,6 +62,8 @@ const QUERY = gql`
       out
       user {
         id
+        firstName
+        lastName
       }
     }
   }

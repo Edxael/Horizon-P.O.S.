@@ -11,12 +11,11 @@ class Template extends React.Component {
     return(
       <div style={ContStyle} >
 
-
         <div style={InfoSty}>
-          <div><strong>Name: </strong>{this.props.employee}</div>
-          <div><strong>Date: </strong>{this.props.in}</div>
-          <div><strong>Time In: </strong>{this.props.in}</div>
-          <div><strong>Time Out: </strong>{this.props.out}</div>
+          <div><strong>Name: </strong>{`${this.props.fname} ${this.props.lname}`}</div>
+          <div><strong>Date: </strong>{this.props.in.substring(0, 9)}</div>
+          <div><strong>Time In: </strong>{this.props.in.substring(11, 19)}</div>
+          <div><strong>Time Out: </strong>{this.props.out.substring(11, 19)}</div>
 
           <div><strong>More Info..: </strong><Link to={`/time/${this.props.id}`}>LINK</Link></div>
         </div>
