@@ -108,8 +108,8 @@ class ProductPOS extends Component {
       console.log(this.state.sale)
 
       let tempSubTot = Math.round( this.state.sale.reduce((acum, cval)=>{ return acum + cval.price }, 0) * 100 )/100
-      const temptax = Math.round( tempSubTot * ( 0.07 ) * 100 )/100
-      const tempTot = Math.round( temptax + tempSubTot * 100 )/100
+      const temptax = Math.round( (tempSubTot * ( 0.07 )) * 100 )/100
+      const tempTot = Math.round( (temptax + tempSubTot) * 100 )/100
 
       this.setState({ subtotal: tempSubTot, tax: temptax, total: tempTot })
 
