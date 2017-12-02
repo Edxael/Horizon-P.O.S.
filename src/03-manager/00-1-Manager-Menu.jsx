@@ -20,6 +20,11 @@ export default class VisMenu extends Component {
 
           <div  style={menuCont}>
             <Link style={btn1} to="/Pe1">Employees</Link>
+            <Link style={btn1} to="/Time1">Time Cards</Link>
+          </div>
+
+          <div  style={menuCont}>
+            <Link style={btn1} to="/Pe1">Transactions</Link>
             <Link style={btn1} to="/T1">Sales-Reports</Link>
           </div>
         </div>

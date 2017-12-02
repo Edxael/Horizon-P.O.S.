@@ -37,6 +37,11 @@ import T_del from './06-transactions/04-Tran-Delete.jsx'
 import T_pnl from './06-transactions/05-Tran-PnL.jsx'
 import T_uni from './06-transactions/99-Tran-UniPage.jsx'
 
+import Time_sea from './07-Time/01-Time-Search.jsx'
+import Time_add from './07-Time/02-Time-Add.jsx'
+import Time_del from './07-Time/03-Time-Delete.jsx'
+import Time_uni from './07-Time/99-Time-Unipage.jsx'
+
 
 class IndexComp extends Component {
   render() {
@@ -75,6 +80,11 @@ class IndexComp extends Component {
                 <Route path="/Pe3" component={Per_upd}/>
                 <Route path="/Pe4" component={Per_del}/>
                 <Route path="/per/:id" component={Per_uni}/>
+
+                <Route path="/Time1" component={Time_sea}/>
+                <Route path="/Time2" component={Time_add}/>
+                <Route path="/Time3" component={Time_del}/>
+                <Route path="/time/:id" component={Time_uni}/>
 
                 <Route path="/T1" component={T_sea}/>
                 <Route path="/T2" component={T_add}/>
