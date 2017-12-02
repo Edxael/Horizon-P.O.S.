@@ -4,7 +4,7 @@ import Logo1 from '../00-gralComps/01-LogoComp.jsx'
 
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Template from './99-Time-Unipage.jsx'
+import Template from './04-Time-Line-Temp.jsx'
 import * as MyLocStorage from '../00-gralComps/locStorage/locStorageFunctions.js'
 
 class TimeRSearch extends Component {
