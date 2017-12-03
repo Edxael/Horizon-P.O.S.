@@ -3,6 +3,10 @@ Bugs to Fix:
 the total is not acurate
 
 
+This is how a Time input data looks like (seems like a string):
+2017-11-27T18:00:00.000Z
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Other Info:
 
