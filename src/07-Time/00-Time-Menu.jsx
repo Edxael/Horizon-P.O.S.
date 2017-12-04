@@ -9,9 +9,9 @@ export default class VisMenu extends Component {
       <div>
         <h2>Time Card Admin-Area</h2>
         <div style={menuCont}>
-          <Link style={btn1} to="/T1">Search</Link>
-          <Link style={btn1} to="/T2">Add</Link>
-          <Link style={btn1} to="/T4">Delete</Link>
+          <Link style={btn1} to="/Time1">Search</Link>
+          <Link style={btn1} to="/Time2">Add</Link>
+          <Link style={btn1} to="/Time4">Delete</Link>
           <Link style={btn1} to="/M1">Admin Menu</Link>
           <Link style={btn1} to="/">Log-Out</Link>
         </div>

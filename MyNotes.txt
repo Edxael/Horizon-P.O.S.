@@ -6,6 +6,11 @@ the total is not acurate
 This is how a Time input data looks like (seems like a string):
 2017-11-27T18:00:00.000Z
 
+Here is how to doit:
+https://dev.graph.cool/docs/faq/managing-date-and-time-in-graphql-ier7sa3eep/
+    new Date(Date.parse('4 Jul 2012')).toISOString() // '2012-07-04T00:00:00.000Z'
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Other Info:
