@@ -1,4 +1,13 @@
 
+Requirements:
+Crud
+Test 1
+Full Test
+Hosted.
+
+------------------
+
+
 Bugs to Fix:
 the total is not acurate
 
@@ -9,6 +18,10 @@ This is how a Time input data looks like (seems like a string):
 Here is how to doit:
 https://dev.graph.cool/docs/faq/managing-date-and-time-in-graphql-ier7sa3eep/
     new Date(Date.parse('4 Jul 2012')).toISOString() // '2012-07-04T00:00:00.000Z'
+
+
+------------------------------
+
 
 
 
