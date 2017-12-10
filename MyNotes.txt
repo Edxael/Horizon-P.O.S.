@@ -1,11 +1,20 @@
 
 Requirements:
 Crud
+<<<<<<< HEAD
 Test 1
-Full Test  -- Jest Testing
+Full Test
 Hosted.
 
 
+=======
+Component Test
+Full Test
+Hosted.
+
+
+
+>>>>>>> fbcd1d4490e6d414981af085d32012809076422c
 ------------------
 
 
