@@ -7,9 +7,13 @@ Full Test  -- Jest Testing
 Hosted.
 
 
+change the buttons bu using a ternary operations: { xxxx ? yyyyy : zzzzz }
+
+
+
 ================
 
-Create button usig idea created in class. 
+Create button usig idea created in class.
 
 
 =======
