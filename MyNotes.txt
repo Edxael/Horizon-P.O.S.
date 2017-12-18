@@ -10,6 +10,15 @@ Hosted.
 Practice on Testing
 
 
+change the buttons bu using a ternary operations: { xxxx ? yyyyy : zzzzz }
+
+
+
+================
+
+Create button usig idea created in class.
+
+
 =======
 Component Test
 Full Test
