@@ -6,6 +6,9 @@ Test 1
 Full Test  -- Jest Testing
 Hosted.
 
+---------------
+Practice on Testing
+
 
 =======
 Component Test
