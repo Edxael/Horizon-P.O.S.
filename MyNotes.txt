@@ -5,6 +5,9 @@ Crud
 Test 1
 Full Test  -- Jest Testing
 Hosted.
+---------------------------------
+backup of line 29 in package.json on scripts the part test.
+"test": "react-scripts test --env=jsdom",
 
 ---------------
 Practice on Testing
