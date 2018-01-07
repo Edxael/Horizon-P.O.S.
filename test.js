@@ -3,6 +3,7 @@ const should = chai.should()
 const total = require('./total.js')
 
 describe('Testing function for adding the total', () => {
+
   it('should return an array when input: array', () => {
     const input = [5, 3, 7]
     const output = total(input)
@@ -58,6 +59,7 @@ describe('Testing function for adding the total', () => {
 
     output.should.equal(28.8)
   })
+
 })
 
 
