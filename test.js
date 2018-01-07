@@ -45,12 +45,18 @@ describe('Testing function for adding the total', () => {
     output[0].should.equal(15)
   })
 
+  it('should return:"11.86" as "Sub-Total" in array output[1]', () => {
+    const input = [5.99, 3.45, 7.50]
+    const output = Math.round(total(input)[1] * 100) / 100
+
+    output.should.equal(11.86)
+  })
+
   it('should return:"15" as "Sub-Total" in array output[0]', () => {
     const input = [5.99, 3.45, 7.50]
-    const output = total(input)
-    console.log(output);
+    const output = Math.round(total(input)[2] * 100) / 100
 
-    output[0].should.equal(15)
+    output.should.equal(28.8)
   })
 })
 
