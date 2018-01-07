@@ -1,49 +1,35 @@
 
-Requirements:
-Crud
-<<<<<<< HEAD
-Test 1
-Full Test  -- Jest Testing
-Hosted.
+Project Requirements:
+
+01- Crud: presentation in show progress.
+02- Component Testing: sudo npm run test
+03- End to End Testing: https://app.ghostinspector.com/
+04- Hosted: pos.mycode.website
+
+
+====================================================================================
+                            NOTES IN DEVELOPMENT
+====================================================================================
+
 ---------------------------------
-backup of line 29 in package.json on scripts the part test.
+Backup of line 29 in package.json on scripts the part test.
+To use module test. using Mocha & Chai.  by: sudo npm run test.
+
+
 "test": "react-scripts test --env=jsdom",
 
----------------
-Practice on Testing
-
-
-change the buttons bu using a ternary operations: { xxxx ? yyyyy : zzzzz }
-
-
-
-================
-
-Create button usig idea created in class.
-
-
-=======
-Component Test
-Full Test
-Hosted.
-
-
-
->>>>>>> fbcd1d4490e6d414981af085d32012809076422c
 ------------------
-
-
 Bugs to Fix:
-the total is not acurate
+the total is not acurate -- Fixed. problem was in handeling decimals.
 
 
+------------------------------------------------
 This is how a Time input data looks like (seems like a string):
 2017-11-27T18:00:00.000Z
 
 Here is how to doit:
 https://dev.graph.cool/docs/faq/managing-date-and-time-in-graphql-ier7sa3eep/
     new Date(Date.parse('4 Jul 2012')).toISOString() // '2012-07-04T00:00:00.000Z'
-
 
 ------------------------------
 
@@ -68,7 +54,9 @@ query {
     }
 }
 
-
+***************************************************************************************************
+                              LINKS TO READ
+***************************************************************************************************
 
 DateTime:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
