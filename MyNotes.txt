@@ -7,6 +7,15 @@ Project Requirements:
 04- Hosted: pos.mycode.website
 
 
+**************************************************************
+data to create new user:
+
+Grunt Machunca
+https://github.com/Edxael/Images/blob/master/07-Log-In-1/krogan.jpg
+gm@gmail.com
+traphan Sector: 7  Building: HTK48
+
+
 ====================================================================================
                             NOTES IN DEVELOPMENT
 ====================================================================================
