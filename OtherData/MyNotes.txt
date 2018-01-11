@@ -1,10 +1,10 @@
 
 Project Requirements:
 
-01- Crud: presentation in show progress.
-02- Component Testing: sudo npm run test
-03- End to End Testing: https://app.ghostinspector.com/
-04- Hosted: pos.mycode.website
+01- Crud: presentation in show progress. --- PASSED
+02- Component Testing: sudo npm run test  --- PASSED
+03- End to End Testing: https://app.ghostinspector.com/  --- PASED
+04- Hosted: pos.mycode.website  --- PASED
 
 
 **************************************************************
