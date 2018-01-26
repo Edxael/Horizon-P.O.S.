@@ -12,3 +12,6 @@ let total = (arr) => {
 }
 
 module.exports = total
+
+
+// Calculations for the Register module
