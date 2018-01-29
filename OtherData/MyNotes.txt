@@ -212,3 +212,7 @@ Dist Partition
 Logo:
 
 https://editor.freelogodesign.org/?lang=EN
+
+---------------------------------------------------
+
+Report data will be conected to printer using JPrint.

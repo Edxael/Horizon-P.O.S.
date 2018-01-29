@@ -13,6 +13,7 @@ export default class extends Component {
 
         <TranMenu/>
         <div>Transaction Search</div>
+        <div>Here is the place where the reports will be render.</div>
       </div>
     )
   }

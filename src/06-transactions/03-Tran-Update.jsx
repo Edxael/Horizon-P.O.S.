@@ -13,6 +13,7 @@ export default class extends Component {
 
         <TranMenu/>
         <div>Transaction Update</div>
+        <div>Transaction Input</div>
       </div>
     )
   }
